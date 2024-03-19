@@ -1,15 +1,14 @@
 %{
-#include <stdio.h>
-#include <stdlib.h>
-#include "gvlogo.tab.h"
-
-extern void yyerror(const char* s);
+	#include <stdio.h>
 %}
 
 %%
 
-
-[ \t\r\n]			;
-.			{ yyerror("Lexing Syntax error.\n"); } 
+[0-9]+ 			{printf("Integer")}
 
 %%
+
+int main(int argc, char** argv){
+	yylex();
+	return 0;
+}
