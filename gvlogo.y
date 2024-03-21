@@ -6,13 +6,31 @@
 %union{
 	float f;
 }
+//Language tokens
+%token PENUP
+%token PENDOWN
+%token PRINT
+%token SAVE
+%token COLOR
+%token CLEAR
+%token TURN
+%token MOVE
+%token GOAT
+%token WHERE
+%token WORD
 
-%token number
-%token plus
-%token minus
-%token 
-%token end
-%token equals
+//Start and End tokens
+%token START
+%token END
+
+//Calculator tokens
+%token PLUS
+%token MINUS
+%token MULTIPLY
+%token DIVIDE
+%token INTEGER
+%token DOT
+
 
 %type<f> number
 %type<f> expression
@@ -22,15 +40,60 @@
 %%
 
 program:
-			expression_list END		{printf("Complete\n");}
+			START something END		{printf("Complete\n");}
 	;
 
-expression_list:	expression
-		|	exxpression expression_list
-		;
+something:		equation
+	|		sentence
+	;
 
-expression:		number plus number equals	{printf("");}
-		|	number minus number equals	{printf("");}
-		;
+//------------------------------------ EQUATION --------------------------------
+equation:		expression equals
+	|		expression equation
+	;
+
+expression:		INTEGER operator INTEGER		{printf("");}
+	;
+
+operator:		MULTIPLY
+	|		DIVIDE
+	|		PLUS
+	|		MINUS
+	;
+//------------------------------------------------------------------------------
+
+//------------------------------------ SENTENCE --------------------------------
+sentence:		command
+	|		print
+	|		SAVE path
+	|		color
+	|		move
+	;
+
+command:		PENUP
+	|		PENDOWN
+	|		COLOR
+	|		CLEAR
+	|		TURN
+	|		WHERE			
+	;
+
+print:
+			PRINT QUOTE words QUOTE
+	;
+
+words:			WORD
+	|		WORD SPACE
+	|		WORD SPACE words
+	;
+
+path:
+			WORD DOT WORD
+	;
+
+move:	
+			MOVE INTEGER
+	;
+
 
 %%
