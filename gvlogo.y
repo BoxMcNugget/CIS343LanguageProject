@@ -28,7 +28,7 @@
 %token MINUS
 %token MULTIPLY
 %token DIVIDE
-%token INTEGER
+%token FLOAT
 %token DOT
 
 
@@ -52,7 +52,7 @@ equation:		expression equals
 	|		expression equation
 	;
 
-expression:		INTEGER operator INTEGER		{printf("");}
+expression:		FLOAT operator FLOAT		{printf("");}
 	;
 
 operator:		MULTIPLY
@@ -92,7 +92,7 @@ path:
 	;
 
 move:	
-			MOVE INTEGER
+			MOVE FLOAT
 	;
 
 

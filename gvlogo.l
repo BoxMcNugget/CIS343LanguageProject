@@ -19,8 +19,8 @@ where					{ printf("WHERE"); return WHERE; }
 ([A-Z][a-z])+				{ printf("WORD"); return WORD; }
 \"					{ printf("QUOTE"); return QUOTE; }
 
-//Space Character?
-[ ]{1,}					{ printf("SPACE"); return SPACE;}
+//Whitespace Character?
+[ \t\n\r]+				{ printf("WHITESPACE");}
 
 //Start and End Commands
 start					{ printf("START"); return START; }
@@ -31,12 +31,9 @@ end					{ printf("END"); return END; }
 -					{ printf("MINUS"); return MINUS; }
 \*					{ printf("MULTIPLY"); return MULTIPLY; }
 /					{ printf("DIVIDE"); return DIVIDE; }
-[0-9]+ 					{ printf("INTEGER"); return INTEGER; }
+[0-9]+ 					{ printf("FLOAT"); return FLOAT; }//before return we need to store the int with an atof function
 \.					{ printf("DOT"); return DOT; }
 
+//Stray Characters
+.					{ printf("YYERROR: Stray Character is Unrecognized"); }
 %%
-
-int main(int argc, char** argv){
-	yylex();
-	return 0;
-}
