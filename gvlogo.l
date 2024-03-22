@@ -5,7 +5,7 @@
 
 %%
 
-//Language commands
+//Language Commands
 penup					{ printf("PENUP"); return PENUP; }
 pendown					{ printf("PENDOWN"); return PENDOWN; }
 print					{ printf("PRINT"); return PRINT; }
@@ -19,20 +19,20 @@ where					{ printf("WHERE"); return WHERE; }
 ([A-Z][a-z])+				{ printf("WORD"); return WORD; }
 \"					{ printf("QUOTE"); return QUOTE; }
 
-//Space Charchter?
+//Space Character?
 [ ]{1,}					{ printf("SPACE"); return SPACE;}
 
 //Start and End Commands
 start					{ printf("START"); return START; }
 end					{ printf("END"); return END; }
 
-//calculator commands
+//Calculator Commands
 \+					{ printf("PLUS"); return PLUS; }
 -					{ printf("MINUS"); return MINUS; }
 \*					{ printf("MULTIPLY"); return MULTIPLY; }
 /					{ printf("DIVIDE"); return DIVIDE; }
 [0-9]+ 					{ printf("INTEGER"); return INTEGER; }
-DOT					{ printf("DOT"); return DOT; }
+\.					{ printf("DOT"); return DOT; }
 
 %%
 
