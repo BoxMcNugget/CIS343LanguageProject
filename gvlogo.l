@@ -1,6 +1,8 @@
 //by Kyle Fink and Gabe Kucinich
 %{
 	#include <stdio.h>
+	#include <stdlib.h>
+	#include "gvlogo.tab.h"
 %}
 
 %%
@@ -20,6 +22,7 @@ where					{ printf("WHERE"); return WHERE; }
 \"					{ printf("QUOTE"); return QUOTE; }
 
 //Whitespace Character?
+//We don't want to return here because we want to ignore whitespace
 [ \t\n\r]+				{ printf("WHITESPACE");}
 
 //Start and End Commands
