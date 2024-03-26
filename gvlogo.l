@@ -3,6 +3,8 @@
 	#include <stdio.h>
 	#include <stdlib.h>
 	#include "gvlogo.tab.h"
+
+	extern void yyerror(const char* s);
 %}
 
 %%
@@ -23,7 +25,7 @@ where					{ printf("WHERE"); return WHERE; }
 
 //Whitespace Character?
 //We don't want to return here because we want to ignore whitespace
-[ \t\n\r]+				{ printf("WHITESPACE");}
+[ \t\n\r]+				{ printf("WHITESPACE");}//after testing replace with ";"
 
 //Start and End Commands
 start					{ printf("START"); return START; }
@@ -38,5 +40,6 @@ end					{ printf("END"); return END; }
 \.					{ printf("DOT"); return DOT; }
 
 //Stray Characters
-.					{ printf("YYERROR: Stray Character is Unrecognized"); }
+.					{ yyerror("Lexing Syntax error.\n"); printf("YYERROR: Stray Character is Unrecognized"); }
+//not sure about the printf statement above
 %%
