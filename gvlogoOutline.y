@@ -70,6 +70,8 @@ void shutdown();
 %token NUMBER
 %token END
 %token SAVE
+%token GOAT
+%token WHERE
 %token PLUS SUB MULT DIV
 %token<s> STRING QSTRING
 %type<f> expression expression_list NUMBER
@@ -85,9 +87,19 @@ statement:		command SEP					{ prompt(); }
 		|	error '\n' 					{ yyerrok; prompt(); }
 		;
 command:		PENUP						{ penup(); }
-		;
-expression_list:
-		|	// Complete these and any missing rules
+		|	PENDOWN						{ pendown(); }
+		|	MOVE NUMBER					{ move($2); }
+		|	TURN NUMBER					{ turn($2); }
+		|	PRINT STRING					{ output($2); }
+		| 	CHANGE_COLOR NUMBER NUMBER NUMBER		{ change_color($2, $3, $4) }
+		|	CLEAR						{ clear() }
+		|	expression_list					{ output($$) }
+		|	GOAT NUMBER NUMBER				{ }//TODO define here }
+		|	WHERE						{ }
+		
+;
+expression_list:	expression expression_list
+		|	expression 					
 		;
 expression:		NUMBER PLUS expression				{ $$ = $1 + $3; }
 		|	NUMBER MULT expression				{ $$ = $1 * $3; }
