@@ -22,13 +22,13 @@ goat					{ printf("GOAT"); return GOAT; }//goto already exists, sub goat
 where					{ printf("WHERE"); return WHERE; }
 ([A-Z][a-z])+				{ printf("WORD"); return WORD; }
 \"					{ printf("QUOTE"); return QUOTE; }
+;					{ printf("SEP"); return SEP; }
 
 //Whitespace Character?
 //We don't want to return here because we want to ignore whitespace
 [ \t\n\r]+				{ printf("WHITESPACE");}//after testing replace with ";"
 
-//Start and End Commands
-start					{ printf("START"); return START; }
+//End Command
 end					{ printf("END"); return END; }
 
 //Calculator Commands
@@ -36,7 +36,7 @@ end					{ printf("END"); return END; }
 -					{ printf("MINUS"); return MINUS; }
 \*					{ printf("MULTIPLY"); return MULTIPLY; }
 /					{ printf("DIVIDE"); return DIVIDE; }
-[0-9]+ 					{ printf("FLOAT"); return FLOAT; }//before return we need to store the int with an atof function
+[0-9]+ 					{ printf("NUMBER"); return NUMBER; }//before return we need to store the int with an atof function
 \.					{ printf("DOT"); return DOT; }
 
 //Stray Characters
