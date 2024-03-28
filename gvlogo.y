@@ -21,6 +21,8 @@ static const int PEN_EVENT = SDL_USEREVENT + 1;
 static const int DRAW_EVENT = SDL_USEREVENT + 2;
 static const int COLOR_EVENT = SDL_USEREVENT + 3;
 
+static char buffer[50];
+
 typedef struct color_t {
 	unsigned char r;
 	unsigned char g;
@@ -95,7 +97,7 @@ command:		PENUP						{ penup(); }
 		|	CHANGE_COLOR NUMBER NUMBER NUMBER		{ change_color($2, $3, $4); }
 		|	CLEAR						{ clear(); }
 		|	PRINT STRING					{ output($2); }
-		|	expression_list					{ output($1); }
+		|	expression_list					{ output(sprintf(buffer, "%f",$1)); }
 		|	GOAT NUMBER NUMBER				{ goat($2, $3); }
 		|	WHERE						{ where(); }
 		;
