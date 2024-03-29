@@ -51,6 +51,7 @@ void save(const char* path);
 void shutdown();
 void where();
 void goat(int x2, int y2);
+void convert(int num);
 
 %}
 
@@ -97,7 +98,7 @@ command:		PENUP						{ penup(); }
 		|	CHANGE_COLOR NUMBER NUMBER NUMBER		{ change_color($2, $3, $4); }
 		|	CLEAR						{ clear(); }
 		|	PRINT STRING					{ output($2); }
-		|	expression_list					{ output(sprintf(buffer, "%f",$1)); }
+		|	expression_list					{ convert($1); }
 		|	GOAT NUMBER NUMBER				{ goat($2, $3); }
 		|	WHERE						{ where(); }
 		;
@@ -112,6 +113,12 @@ expression:		NUMBER PLUS expression				{ $$ = $1 + $3; }
 		;
 
 %%
+
+void convert(int num){
+	char s[20];
+	sprintf(s, "%d", num);
+	output(s);	
+}
 
 int main(int argc, char** argv){
 	startup();

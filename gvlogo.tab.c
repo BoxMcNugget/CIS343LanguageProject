@@ -117,9 +117,10 @@ void save(const char* path);
 void shutdown();
 void where();
 void goat(int x2, int y2);
+void convert(int num);
 
 
-#line 123 "gvlogo.tab.c"
+#line 124 "gvlogo.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -195,12 +196,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 57 "gvlogo.y"
+#line 58 "gvlogo.y"
 
 	float f;
 	char* s;
 
-#line 204 "gvlogo.tab.c"
+#line 205 "gvlogo.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -594,9 +595,9 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    85,    85,    87,    88,    90,    91,    93,    94,    95,
-      96,    97,    98,    99,   100,   101,   102,   104,   105,   107,
-     108,   109,   110,   111
+       0,    86,    86,    88,    89,    91,    92,    94,    95,    96,
+      97,    98,    99,   100,   101,   102,   103,   105,   106,   108,
+     109,   110,   111,   112
 };
 #endif
 
@@ -1502,109 +1503,109 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 85 "gvlogo.y"
+#line 86 "gvlogo.y"
                                                                         { printf("Program complete."); shutdown(); exit(0); }
-#line 1508 "gvlogo.tab.c"
+#line 1509 "gvlogo.tab.c"
     break;
 
   case 5:
-#line 90 "gvlogo.y"
+#line 91 "gvlogo.y"
                                                                         { prompt(); }
-#line 1514 "gvlogo.tab.c"
+#line 1515 "gvlogo.tab.c"
     break;
 
   case 6:
-#line 91 "gvlogo.y"
+#line 92 "gvlogo.y"
                                                                         { yyerrok; prompt(); }
-#line 1520 "gvlogo.tab.c"
+#line 1521 "gvlogo.tab.c"
     break;
 
   case 7:
-#line 93 "gvlogo.y"
+#line 94 "gvlogo.y"
                                                                         { penup(); }
-#line 1526 "gvlogo.tab.c"
+#line 1527 "gvlogo.tab.c"
     break;
 
   case 8:
-#line 94 "gvlogo.y"
+#line 95 "gvlogo.y"
                                                                         { pendown(); }
-#line 1532 "gvlogo.tab.c"
+#line 1533 "gvlogo.tab.c"
     break;
 
   case 9:
-#line 95 "gvlogo.y"
+#line 96 "gvlogo.y"
                                                                         { move((yyvsp[0].f)); }
-#line 1538 "gvlogo.tab.c"
+#line 1539 "gvlogo.tab.c"
     break;
 
   case 10:
-#line 96 "gvlogo.y"
+#line 97 "gvlogo.y"
                                                                         { turn((yyvsp[0].f)); }
-#line 1544 "gvlogo.tab.c"
+#line 1545 "gvlogo.tab.c"
     break;
 
   case 11:
-#line 97 "gvlogo.y"
+#line 98 "gvlogo.y"
                                                                         { change_color((yyvsp[-2].f), (yyvsp[-1].f), (yyvsp[0].f)); }
-#line 1550 "gvlogo.tab.c"
+#line 1551 "gvlogo.tab.c"
     break;
 
   case 12:
-#line 98 "gvlogo.y"
+#line 99 "gvlogo.y"
                                                                         { clear(); }
-#line 1556 "gvlogo.tab.c"
+#line 1557 "gvlogo.tab.c"
     break;
 
   case 13:
-#line 99 "gvlogo.y"
+#line 100 "gvlogo.y"
                                                                         { output((yyvsp[0].s)); }
-#line 1562 "gvlogo.tab.c"
+#line 1563 "gvlogo.tab.c"
     break;
 
   case 14:
-#line 100 "gvlogo.y"
-                                                                        { output(sprintf(buffer, "%f",(yyvsp[0].f))); }
-#line 1568 "gvlogo.tab.c"
+#line 101 "gvlogo.y"
+                                                                        { convert((yyvsp[0].f)); }
+#line 1569 "gvlogo.tab.c"
     break;
 
   case 15:
-#line 101 "gvlogo.y"
+#line 102 "gvlogo.y"
                                                                         { goat((yyvsp[-1].f), (yyvsp[0].f)); }
-#line 1574 "gvlogo.tab.c"
+#line 1575 "gvlogo.tab.c"
     break;
 
   case 16:
-#line 102 "gvlogo.y"
+#line 103 "gvlogo.y"
                                                                         { where(); }
-#line 1580 "gvlogo.tab.c"
+#line 1581 "gvlogo.tab.c"
     break;
 
   case 19:
-#line 107 "gvlogo.y"
+#line 108 "gvlogo.y"
                                                                         { (yyval.f) = (yyvsp[-2].f) + (yyvsp[0].f); }
-#line 1586 "gvlogo.tab.c"
+#line 1587 "gvlogo.tab.c"
     break;
 
   case 20:
-#line 108 "gvlogo.y"
+#line 109 "gvlogo.y"
                                                                         { (yyval.f) = (yyvsp[-2].f) * (yyvsp[0].f); }
-#line 1592 "gvlogo.tab.c"
+#line 1593 "gvlogo.tab.c"
     break;
 
   case 21:
-#line 109 "gvlogo.y"
+#line 110 "gvlogo.y"
                                                                         { (yyval.f) = (yyvsp[-2].f) - (yyvsp[0].f); }
-#line 1598 "gvlogo.tab.c"
+#line 1599 "gvlogo.tab.c"
     break;
 
   case 22:
-#line 110 "gvlogo.y"
+#line 111 "gvlogo.y"
                                                                         { (yyval.f) = (yyvsp[-2].f) / (yyvsp[0].f); }
-#line 1604 "gvlogo.tab.c"
+#line 1605 "gvlogo.tab.c"
     break;
 
 
-#line 1608 "gvlogo.tab.c"
+#line 1609 "gvlogo.tab.c"
 
       default: break;
     }
@@ -1842,8 +1843,14 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 114 "gvlogo.y"
+#line 115 "gvlogo.y"
 
+
+void convert(int num){
+	char s[20];
+	sprintf(s, "%d", num);
+	output(s);	
+}
 
 int main(int argc, char** argv){
 	startup();
