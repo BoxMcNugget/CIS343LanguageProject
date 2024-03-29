@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.8.2.  */
+/* A Bison parser, made by GNU Bison 3.5.1.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,9 +31,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
-   especially those whose name start with YY_ or yy_.  They are
-   private implementation details that can be changed or removed.  */
+/* Undocumented macros, especially those whose name start with YY_,
+   are private implementation details.  Do not rely on them.  */
 
 #ifndef YY_YY_GVLOGO_TAB_H_INCLUDED
 # define YY_YY_GVLOGO_TAB_H_INCLUDED
@@ -45,38 +44,33 @@
 extern int yydebug;
 #endif
 
-/* Token kinds.  */
+/* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
   enum yytokentype
   {
-    YYEMPTY = -2,
-    YYEOF = 0,                     /* "end of file"  */
-    YYerror = 256,                 /* error  */
-    YYUNDEF = 257,                 /* "invalid token"  */
-    SEP = 258,                     /* SEP  */
-    PENUP = 259,                   /* PENUP  */
-    PENDOWN = 260,                 /* PENDOWN  */
-    PRINT = 261,                   /* PRINT  */
-    CHANGE_COLOR = 262,            /* CHANGE_COLOR  */
-    COLOR = 263,                   /* COLOR  */
-    CLEAR = 264,                   /* CLEAR  */
-    TURN = 265,                    /* TURN  */
-    LOOP = 266,                    /* LOOP  */
-    MOVE = 267,                    /* MOVE  */
-    NUMBER = 268,                  /* NUMBER  */
-    END = 269,                     /* END  */
-    SAVE = 270,                    /* SAVE  */
-    GOAT = 271,                    /* GOAT  */
-    WHERE = 272,                   /* WHERE  */
-    PLUS = 273,                    /* PLUS  */
-    SUB = 274,                     /* SUB  */
-    MULT = 275,                    /* MULT  */
-    DIV = 276,                     /* DIV  */
-    STRING = 277,                  /* STRING  */
-    QSTRING = 278                  /* QSTRING  */
+    SEP = 258,
+    PENUP = 259,
+    PENDOWN = 260,
+    PRINT = 261,
+    CHANGE_COLOR = 262,
+    COLOR = 263,
+    CLEAR = 264,
+    TURN = 265,
+    LOOP = 266,
+    MOVE = 267,
+    NUMBER = 268,
+    END = 269,
+    SAVE = 270,
+    GOAT = 271,
+    WHERE = 272,
+    PLUS = 273,
+    SUB = 274,
+    MULT = 275,
+    DIV = 276,
+    STRING = 277,
+    QSTRING = 278
   };
-  typedef enum yytokentype yytoken_kind_t;
 #endif
 
 /* Value type.  */
@@ -88,7 +82,7 @@ union YYSTYPE
 	float f;
 	char* s;
 
-#line 92 "gvlogo.tab.h"
+#line 86 "gvlogo.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -113,8 +107,6 @@ struct YYLTYPE
 
 extern YYSTYPE yylval;
 extern YYLTYPE yylloc;
-
 int yyparse (void);
-
 
 #endif /* !YY_YY_GVLOGO_TAB_H_INCLUDED  */

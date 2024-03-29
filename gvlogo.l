@@ -1,4 +1,4 @@
-//by Kyle Fink and Gabe Kucinich
+
 %{
 	#include <stdio.h>
 	#include <stdlib.h>
@@ -9,7 +9,7 @@
 
 %%
 
-//Language Commands
+
 penup					{ printf("PENUP"); return PENUP; }
 pendown					{ printf("PENDOWN"); return PENDOWN; }
 print					{ printf("PRINT"); return PRINT; }
@@ -24,22 +24,20 @@ where					{ printf("WHERE"); return WHERE; }
 \"					{ printf("QUOTE"); return QUOTE; }
 ;					{ printf("SEP"); return SEP; }
 
-//Whitespace Character?
-//We don't want to return here because we want to ignore whitespace
+
+
 [ \t\n\r]+				{ printf("WHITESPACE");}//after testing replace with ";"
 
-//End Command
+
 end					{ printf("END"); return END; }
 
-//Calculator Commands
 \+					{ printf("PLUS"); return PLUS; }
 -					{ printf("MINUS"); return MINUS; }
 \*					{ printf("MULTIPLY"); return MULTIPLY; }
-/					{ printf("DIVIDE"); return DIVIDE; }
-[0-9]+ 					{ printf("NUMBER"); return NUMBER; }//before return we need to store the int with an atof function
+\/					{ printf("DIVIDE"); return DIVIDE; }
+[0-9]+ 					{ printf("NUMBER"); return NUMBER; }
 \.					{ printf("DOT"); return DOT; }
 
-//Stray Characters
 .					{ yyerror("Lexing Syntax error.\n"); printf("YYERROR: Stray Character is Unrecognized"); }
-//not sure about the printf statement above
+
 %%
